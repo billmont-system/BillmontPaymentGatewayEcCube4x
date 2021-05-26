@@ -1,0 +1,48 @@
+<div class="d-none">
+  <div id="billmont-payment-append-items">
+
+    <div class="row mb-3">
+      <label class="col-3">決済状況</label>
+      <div class="col">
+        {{ Order.billmont_payment_status is not empty ? Order.billmont_payment_status.name : '--' }}        
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-3">決済承認番号</label>
+      <div class="col">
+        {{ Order.billmont_payment_tran_code is not empty ? Order.billmont_payment_tran_code : '--' }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-3">決済明細表記名</label>
+      <div class="col">
+        {{ Order.billmont_payment_dba is not empty ? Order.billmont_payment_dba : '--' }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+(function(){
+
+$(function(){
+  //var order_Payment = $('#order_Payment').val();
+  var paymentStatusName = '{{ Order.billmont_payment_status is not empty ? Order.billmont_payment_status.name : '--' }}';
+  var paymentStatusId = '{{ Order.billmont_payment_status is not empty ? Order.billmont_payment_status.id : '' }}';
+  var paymentTranCode = '{{ Order.billmont_payment_tran_code is not empty ? Order.billmont_payment_tran_code : '' }}';
+  var paymentTranDba = '{{ Order.billmont_payment_dba }}';
+  
+
+  var el_orderOverview = $('#orderOverview');
+  let el_target_c = $('.card-body .row .col-6').eq(0);
+
+  el_target_c.append($('#billmont-payment-append-items'));
+
+});
+
+
+})();
+</script>
